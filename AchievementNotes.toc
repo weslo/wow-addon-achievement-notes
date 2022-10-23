@@ -1,0 +1,8 @@
+## Title: Achievement Notes
+## Version: @project-version@
+## Author: Weslo
+## Interface: 70300
+## Notes: Adds text fields to take notes on each Achievement.
+## X-Category: Achievements
+
+Main.xml
