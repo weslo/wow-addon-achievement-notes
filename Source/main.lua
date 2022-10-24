@@ -1,6 +1,8 @@
 AchievementNotes.Chat:Print("Loaded main.lua")
 local data = {}
 
+ACHIEVEMENTBUTTON_COLLAPSEDHEIGHT = 124
+
 StaticPopupDialogs["AchievementUrl"] = {
     text = "Copy & Paste the link into your browser",
     button1 = "Close",
@@ -15,6 +17,9 @@ StaticPopupDialogs["AchievementUrl"] = {
             self.editBox:SetText(data.url)
             self.editBox:SetWidth(self.editBox:GetParent():GetWidth() - 50)
             self.editBox:HighlightText()
+            self.editBox:SetScript("OnEditFocusLost", function()
+                self:Hide()
+            end)
         end,
     hasEditBox = true
 }
@@ -26,9 +31,9 @@ function AchievementNotes.OnEvent(self, event, arg1, ...)
             button:HookScript("OnUpdate", AchievementNotes.OnAchievementButtonUpdate)
             button:HookScript("OnClick", AchievementNotes.OnAchievementButtonClicked)local
             b = CreateFrame("Button", "MyButton", button, "UIPanelButtonTemplate")
-            b:SetSize(80, 14)
+            b:SetSize(65, 16)
             b:SetText("wowhead")
-            b:SetPoint("BOTTOMRIGHT")
+            b:SetPoint("BOTTOMLEFT", 6, 2)
             b:SetScript("OnClick", function()
                 local d = {}
                 d.url = "https://www.wowhead.com/achievement=" .. button.id .. "/"
